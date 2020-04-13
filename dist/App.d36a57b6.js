@@ -33267,6 +33267,10 @@ var Details = /*#__PURE__*/function (_React$Component) {
       });
     });
 
+    _defineProperty(_assertThisInitialized(_this), "adopt", function () {
+      return (0, _router.navigate)(_this.state.url);
+    });
+
     return _this;
   }
 
@@ -33294,6 +33298,8 @@ var Details = /*#__PURE__*/function (_React$Component) {
     key: "render",
     //any function that return  markup is a react component
     value: function render() {
+      var _this3 = this;
+
       if (this.state.loading) {
         return /*#__PURE__*/_react.default.createElement("h1", null, "loading ....");
       }
@@ -33304,21 +33310,29 @@ var Details = /*#__PURE__*/function (_React$Component) {
           location = _this$state.location,
           description = _this$state.description,
           name = _this$state.name,
-          media = _this$state.media;
+          media = _this$state.media,
+          showModal = _this$state.showModal;
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "details"
       }, /*#__PURE__*/_react.default.createElement(_Carousel.default, {
         media: media
-      }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, name), /*#__PURE__*/_react.default.createElement("h2", null, "".concat(breed - animal - location)), /*#__PURE__*/_react.default.createElement("h2", null, description), /*#__PURE__*/_react.default.createElement(_ThemeContext.default.Consumer, null, function (_ref2) {
+      }), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, name), /*#__PURE__*/_react.default.createElement("h2", null, "".concat(breed - animal - location)), /*#__PURE__*/_react.default.createElement(_ThemeContext.default.Consumer, null, function (_ref2) {
         var _ref3 = _slicedToArray(_ref2, 1),
             theme = _ref3[0];
 
         return /*#__PURE__*/_react.default.createElement("button", {
+          onClick: _this3.toggleModal,
           style: {
             backgroundColor: theme
           }
         }, " Adopt ", name, " ");
-      })));
+      }), /*#__PURE__*/_react.default.createElement("h2", null, description), showModal ? /*#__PURE__*/_react.default.createElement(_Modal.default, null, /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h1", null, "Would you like to adopt ", name), /*#__PURE__*/_react.default.createElement("idv", {
+        className: "buttons"
+      }, /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.adopt
+      }, "Yes"), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.toggleModal
+      }, "No , I am a monster ")))) : null));
     }
   }]);
 
