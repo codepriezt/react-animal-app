@@ -35,15 +35,23 @@ class Details extends React.Component{
                         } , console.Error)
         }
         toggleModal = () => this.setState({showModal: !this.state.showModal})
+        adopt = () => navigate(this.state.url)
 
-        //any function that return  markup is a react component
+          //any function that return  markup is a react component
 
    render() {
         if(this.state.loading){
                 return <h1>loading ....</h1>
         }
 
-        const { animal , breed , location , description , name , media} = this.state;
+        const {
+                 animal , 
+                 breed , 
+                 location , 
+                 description , 
+                 name , 
+                 media , 
+                  showModal} = this.state;
 
         return(
                 <div className = "details">
@@ -51,13 +59,29 @@ class Details extends React.Component{
                         <div>
                                 <h2>{name}</h2>
                                 <h2>{`${breed - animal - location}`}</h2>
-                                <h2>{description}</h2>
 
                                 <ThemeContext.Consumer>
                                         {([theme]) => (
-                                              <button style={ {backgroundColor : theme} }> Adopt {name} </button>
+                                              <button  onClick={this.toggleModal} style={ {backgroundColor : theme} }> Adopt {name} </button>
                                         )}
                                 </ThemeContext.Consumer>
+                                
+                                <h2>{description}</h2>
+
+                                {showModal ? (
+                                        <Modal>
+                                                <div>
+                                                <h1>Would you like to adopt {name}</h1>
+
+                                                <idv className ="buttons">
+                                                        <button onClick={this.adopt}>Yes</button>
+                                                        <button onClick={this.toggleModal}>No , I am a monster </button>
+                                                </idv>
+                                                </div>
+
+                                        </Modal>
+                                ) :null} 
+
                         </div>
                 </div>
         )
