@@ -1,26 +1,29 @@
-import  React from 'react';
+import  React , { useState }from 'react';
 import {render} from 'react-dom';
 import { Router , Link }  from "@reach/router";
 import SearchParams from './searchParams';
 import Details from "./Details";
+import ThemeContext from './ThemeContext';
 
 
 
 
 const App = () => {
+    const themeHook = useState("darkblue")
 return (
 <React.StrictMode>
-    <Router>
+    <ThemeContext.Provider value={themeHook}>
     <div>
         <header>
             <Link to="/"> Adopt Me !</Link>
         </header>
 
-        <SearchParams path="/"/>
+        <Router>
+       <SearchParams path="/"/>
         <Details path="/details/:id"/>
+        </Router>
     </div>
-    </Router>
- 
+    </ThemeContext.Provider>
     </React.StrictMode>
 )
 
