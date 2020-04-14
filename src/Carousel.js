@@ -3,7 +3,7 @@ import React from 'react';
 class Carousel extends React.Component{
 
     state = {
-        photos :[],
+        photos : [],
         active:0,
     };
 
@@ -18,7 +18,7 @@ class Carousel extends React.Component{
         let photos = ['http://placecorgi.com/600/600'];
 
             if (media.length){
-              photos = media.map(({large}) => large)
+              photos = media.map(( {large} ) => large)
             }
 
             return { photos }; 
