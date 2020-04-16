@@ -1,4 +1,4 @@
-import React , {   useState ,useEffect} from 'react';
+import React , {useState ,useEffect} from 'react';
 
 
 const EffectComponent = () => {
@@ -6,7 +6,7 @@ const EffectComponent = () => {
 
     useEffect(() => {
         const timer = setTimeout(setTime(new Date()) , 1000);
-        return () => clearTimeout(thistimer)
+        return () => clearTimeout(this.timer)
     });
 
     return <h1>useEffect Example: {time.toLocalTimeString()}</h1>
